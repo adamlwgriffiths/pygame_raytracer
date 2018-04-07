@@ -83,7 +83,7 @@ def cast_ray(r):
     return 0, 0, 0
 
 def update(time, delta):
-    #rotation = matrix.y_rotation(delta * 2 * math.pi)
+    #rotation = matrix.y_rotation((2 * math.pi) * (delta * 0.01))
     rotation = matrix.y_rotation(math.pi * 2 / 360.0)
     scene['camera'] = matrix.multiply(scene['camera'], rotation)
 
@@ -99,11 +99,11 @@ def draw(surface):
             rect = pygame.Rect(int(x * PIXEL_SCALE), int(y * PIXEL_SCALE), PIXEL_SCALE, PIXEL_SCALE)
             surface.fill(colour, rect)
 
-def time_millis():
-    return pygame.time.get_ticks() * 1000.0
+def time_seconds():
+    return pygame.time.get_ticks() / 1000.0
 
 def run():
-    time = time_millis()
+    time = time_seconds()
 
     while True:
         for event in pygame.event.get():
@@ -113,7 +113,7 @@ def run():
                 if event.key == K_ESCAPE:
                     return
 
-        current = time_millis()
+        current = time_seconds()
         delta = current - time
         update(time, delta)
         time = current
