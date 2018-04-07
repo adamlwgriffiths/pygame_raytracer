@@ -1,4 +1,4 @@
-#Software Ray Tracer
+# Software Ray Tracer
 
 Ray tracer written in Python using PyGame.
 
